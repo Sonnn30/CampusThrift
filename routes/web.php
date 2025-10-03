@@ -7,6 +7,9 @@ use Inertia\Inertia;
 //     return Inertia::render('login');
 // })->name('login');
 
+
+
+
 Route::get('/' ,function(){
     return Inertia::render('home');
 })-> name('home');
@@ -40,3 +43,7 @@ Route::prefix('/COD')->group(function(){
         return Inertia::render("CODLocation");
     })->name("CODLocation");
 });
+
+Route::get('/ProductDetail', function(){
+    return Inertia::render('ProductDetail');
+})->name('ProductDetail');
