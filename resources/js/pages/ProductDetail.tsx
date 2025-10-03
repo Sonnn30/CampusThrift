@@ -9,7 +9,7 @@ export default function ProductDetail() {
     name: "Nama Produk",
     price: "Rp 1.200.000",
     rating: 4.7,
-    reviewsCount: 100,
+    reviewsCount: 1203,
     description: [
       "Lorem ipsum dolor sit amet",
       "Lorem ipsum dolor sit amet",
@@ -164,11 +164,11 @@ export default function ProductDetail() {
         {/* horizontal row: no vertical scrollbar allowed */}
         <div className="flex gap-4 overflow-x-auto overflow-y-hidden py-2">
           {product.anotherItems.map((item, i) => (
-            <motion.div key={i} whileHover={{ scale: 1.03 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} style={{ transformOrigin: "center center" }} className="ml-1 border rounded-lg p-4 bg-white shadow flex flex-col items-center w-64 flex-shrink-0 transform-gpu">
+            <motion.div key={i} whileHover={{ scale: 1.03 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} style={{ transformOrigin: "center center" }} className="ml-1 border rounded-lg p-4 bg-[#D9C4B0] shadow flex flex-col items-center w-64 flex-shrink-0 transform-gpu">
               <img src={item.img} alt={item.name} className="w-full h-32 object-cover rounded-md mb-3"/>
               <h3 className="font-semibold">{item.name}</h3>
               <p className="text-green-600 font-bold mb-3">{item.price}</p>
-              <Link href="#" className="mt-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+              <Link href="#" className="mt-auto px-4 py-2 bg-white rounded-lg hover:bg-blue-700">
                 Make Appointment
               </Link>
             </motion.div>
