@@ -28,6 +28,9 @@ Route::get('/login', function(){
     return Inertia::render('login');
 })->name('login');
 
+Route::get('/product', function () {
+    return Inertia::render('ProductCatalog');
+});
 
 Route::prefix('/COD')->group(function(){
     Route::get('/date', function(){
