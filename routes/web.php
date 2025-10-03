@@ -23,3 +23,7 @@ Route::get('/SignUp', function(){
 Route::get('/login', function(){
     return Inertia::render('login');
 })->name('login');
+
+Route::get('/product', function () {
+    return Inertia::render('ProductCatalog');
+});
