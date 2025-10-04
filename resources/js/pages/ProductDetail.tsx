@@ -172,12 +172,14 @@ export default function ProductDetail() {
         <div className="flex gap-4 overflow-x-auto overflow-y-hidden py-2">
           {product.anotherItems.map((item, i) => (
             <div className="ml-1 border rounded-lg p-4 bg-[#D9C4B0] shadow flex flex-col items-center w-[302px] h-[376px] flex-shrink-0 transform-gpu">
-              <img src={item.img} alt={item.name} className="w-full h-199 object-cover rounded-md mb-3"/>
-              <h3 className="font-semibold">{item.name}</h3>
-              <p className="font-bold mb-3">{item.price}</p>
-              <Link href="#" className="w-4/5 text-center mt-auto px-4 py-2 bg-white rounded-lg hover:bg-blue-700">
-                Make Appointment
-              </Link>
+              <img src={item.img} alt={item.name} className="bg-white w-full h-199 object-cover rounded-md mb-3"/>
+              <div className="flex flex-col item-left w-full">
+                <h3 className="font-semibold">{item.name}</h3>
+                <p className="font-bold mb-3">{item.price}</p>
+                <Link href="#" className="w-full text-center mt-auto px-4 py-2 bg-white rounded-lg hover:bg-blue-700">
+                  Make Appointment
+                </Link>
+              </div>
             </div>
           ))}
         </div>
