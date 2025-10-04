@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { Link } from "@inertiajs/react";
+import { motion } from "framer-motion";
 import { format } from "date-fns";
 
 export default function ProductDetail() {
@@ -62,8 +62,8 @@ export default function ProductDetail() {
   const [selectedImage, setSelectedImage] = useState(product.images[0]);
 
   return (
-    <div className=" mx-auto px-6 py-10 space-y-10">
-      <div className="flex gap-10">
+    <div className="flex flex-col justify-center items-center mx-auto px-6 py-10 space-y-10">
+      <div className="inline-flex max-w-[1274px] gap-10 mx-auto">
         {/* Thumbnail*/}
         <div className="flex gap-4 w-max">
           <div className="flex flex-col justify-between h-[503px]">
@@ -75,7 +75,7 @@ export default function ProductDetail() {
         </div>
 
         {/* Product Info */}
-        <div className="w-400">
+        <div className="w-[495px]">
           <h1 className="text-[40px] font-bold mb-2">{product.name}</h1>
 
           {/* Rating */}
@@ -109,11 +109,11 @@ export default function ProductDetail() {
               {/* Payment */}
               <div className="mb-3 flex border rounded-lg overflow-hidden divide-x h-[66px]">
                 <div className="flex items-center gap-2 flex-1 px-3 py-2 bg-gray-50">
-                  <span className="text-lg">💵</span>
+                  <img src="/cash-on-delivery.png" alt="COD" />
                   <span className="text-[20px]">COD</span>
                 </div>
                 <div className="flex items-center gap-2 flex-1 px-3 py-2 bg-gray-50">
-                  <span className="text-lg">📦</span>
+                  <img src="/pickup.png" alt="pickup" />
                   <span className="text-[20px]">Drop & Pick</span>
                 </div>
               </div>
@@ -122,7 +122,7 @@ export default function ProductDetail() {
               {/* Seller */}
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg">🏬</span>
+                    <img src="shop.png" className="w-[27px] h-[27px]" alt="shop" />
                     <span>{product.shipping.seller}</span>
                   </div>
                   <div className="flex items-center gap-1">
@@ -134,8 +134,8 @@ export default function ProductDetail() {
                 </div>
                 <hr></hr>
                 {/* Location  */}
-                <div className="flex items-center justify-between ">
-                  <span className="text-lg">📍</span>
+                <div className="flex items-center gap-2">
+                  <img src="/placeholder-2.png" className="w-[27px] h-[27px]" alt="location" />
                   <span>{product.shipping.location}</span>
                 </div>
               </div>
@@ -149,9 +149,9 @@ export default function ProductDetail() {
         <h2 className="text-xl font-bold mb-4">Reviews</h2>
         <div className="flex gap-4 overflow-x-auto">
           {product.reviews.map((rev, i) => (
-            <div key={i} className="flex flex-col border rounded-lg p-4 bg-white shadow h-[149px] w-[414px] flex-shrink-0">
+            <div key={i} className="flex flex-col border rounded-lg p-4 bg-white shadow min-h-[149px] w-[414px] flex-shrink-0">
               <div className="flex flex-col justify-between mb-2">
-                <span className="font-semibold">{rev.buyer}</span>
+                <span className="text-[20px] font-bold">{rev.buyer}</span>
                 <div className="flex justify-between item-center">
                   <span className="flex gap-1">
                     {Array.from({ length: 5 }, (_, i) => i < Math.round(rev.ratings) ? <span key={i} className="text-[22px] text-yellow-400">★</span> : <span key={i} className="text-[22px] text-gray-300">★</span>)}
@@ -159,7 +159,7 @@ export default function ProductDetail() {
                   <span className="text-gray-500 text-sm">{rev.date}</span>
                 </div>
               </div>
-              <p className="text-gray-700 text-sm">{rev.text}</p>
+              <p className="text-gray-700 text-[14px]">{rev.text}</p>
             </div>
           ))}
         </div>
@@ -175,10 +175,15 @@ export default function ProductDetail() {
               <img src={item.img} alt={item.name} className="bg-white w-full h-199 object-cover rounded-md mb-3"/>
               <div className="flex flex-col item-left w-full">
                 <h3 className="font-semibold">{item.name}</h3>
+                <div className="flex bg-[#7ED751] gap-1 items-center w-2/5 rounded-lg px-1">
+                  <img src="/checkmark.png" className="w-[12px] h-[12px]" alt="checkmark" />
+                  <span className="text-[11px]">Good Seller</span>
+                </div>
                 <p className="font-bold mb-3">{item.price}</p>
-                <Link href="#" className="w-full text-center mt-auto px-4 py-2 bg-white rounded-lg hover:bg-blue-700">
-                  Make Appointment
-                </Link>
+                  <Link href="#" className=" flex w-full text-[20px] text-center mt-auto px-4 py-2 bg-white rounded-lg hover:bg-blue-700 gap-3 items-center justify-center">
+                    Make Appointment
+                    <img src="/chat-bubble.png" alt="chatbubble" className="w-[21px] h-[21px]" />
+                  </Link>
               </div>
             </div>
           ))}
