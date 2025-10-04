@@ -8,7 +8,7 @@ export default function ProductDetail() {
   const product = {
     name: "Nama Produk",
     price: "Rp 1.200.000",
-    rating: 4.7,
+    rating: 3.4,
     reviewsCount: 1203,
     description: [
       "Lorem ipsum dolor sit amet",
@@ -33,16 +33,19 @@ export default function ProductDetail() {
     reviews: [
       {
         buyer: "Nama Buyer",
+        ratings: 4.8,
         date: "20/01/2025",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
       },
       {
         buyer: "Nama Buyer",
+        ratings: 3.6,
         date: "22/01/2025",
         text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
       },
       {
         buyer: "Nama Buyer",
+        ratings: 3.1,
         date: "23/01/2025",
         text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco...",
       },
@@ -59,35 +62,32 @@ export default function ProductDetail() {
   const [selectedImage, setSelectedImage] = useState(product.images[0]);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 space-y-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div className=" mx-auto px-6 py-10 space-y-10">
+      <div className="flex gap-10">
         {/* Thumbnail*/}
-        <div className="flex gap-4">
-          <div className="flex flex-col gap-2">
+        <div className="flex gap-4 w-max">
+          <div className="flex flex-col justify-between h-[503px]">
             {product.images.map((img, i) => (
-              <img key={i} src={img} alt={`Foto ${i}`} onClick={() => setSelectedImage(img)} className={`w-20 h-20 object-cover border rounded-lg cursor-pointer ${ selectedImage === img ? "ring-2 ring-blue-500" : ""}`}/>
+              <img key={i} src={img} alt={`Foto ${i}`} onClick={() => setSelectedImage(img)} className={`w-[105px] h-[89px] object-cover border cursor-pointer ${ selectedImage === img ? "ring-2 ring-blue-500" : ""}`}/>
             ))}
           </div>
-          <motion.div key={selectedImage} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }} className="flex-1"
-          >
-            <img src={selectedImage} alt="Foto Produk" className="w-full h-[400px] object-cover rounded-lg border"/>
-          </motion.div>
+          <img src={selectedImage} alt="Foto Produk" className="w-[618px] h-[503px] object-cover border flex-shrink-0"/>
         </div>
 
         {/* Product Info */}
-        <div>
-          <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
+        <div className="w-400">
+          <h1 className="text-[40px] font-bold mb-2">{product.name}</h1>
 
           {/* Rating */}
           <div className="flex items-center gap-2 mb-4">
-            <span className="text-yellow-500">⭐</span>
-            <span className="font-semibold">{product.rating}</span>
-            <span className="text-gray-500">
-              ({product.reviewsCount} reviews)
+            {Array.from({ length: 5 }, (_, i) => i < Math.round(product.rating) ? <span key={i} className="text-[30px] text-yellow-400">★</span> : <span key={i} className="text-[30px] text-gray-300">★</span>)}
+            <span className="font-semibold">[{product.rating}]</span>
+            <span className="font-bold">
+              {product.reviewsCount} reviews
             </span>
           </div>
 
-          <p className="text-2xl font-bold text-green-600 mb-4">
+          <p className="text-[36px] font-bold mb-4">
             {product.price}
           </p>
 
@@ -102,40 +102,42 @@ export default function ProductDetail() {
           </div>
 
           {/* Shipping info */}
-          <div className="mb-6">
+          <div className="flex flex-col mb-6">
             <h2 className="font-semibold mb-2">Shipping Information</h2>
-            <div className="space-y-3 text-sm text-gray-700 min-w-80 max-w-100">
+            <div className="flex flex-col text-sm text-gray-700 w-full max-w-[400px] min-w-50">
 
               {/* Payment */}
-              <div className="flex border rounded-lg overflow-hidden divide-x">
+              <div className="mb-3 flex border rounded-lg overflow-hidden divide-x h-[66px]">
                 <div className="flex items-center gap-2 flex-1 px-3 py-2 bg-gray-50">
                   <span className="text-lg">💵</span>
-                  <span>COD</span>
+                  <span className="text-[20px]">COD</span>
                 </div>
                 <div className="flex items-center gap-2 flex-1 px-3 py-2 bg-gray-50">
                   <span className="text-lg">📦</span>
-                  <span>Drop & Pick</span>
+                  <span className="text-[20px]">Drop & Pick</span>
                 </div>
               </div>
 
+              <div className="flex flex-col items-left justify-between border rounded-lg px-3 py-2 bg-gray-50 h-[101px]">
               {/* Seller */}
-              <div className="flex items-center justify-between border rounded-lg px-3 py-2 bg-gray-50">
-                <div className="flex items-center gap-2">
-                  <span className="text-lg">🏬</span>
-                  <span>{product.shipping.seller}</span>
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">🏬</span>
+                    <span>{product.shipping.seller}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span className="text-yellow-500">⭐</span>
+                    <span className="text-gray-800 text-sm">
+                      ({product.rating}) {product.shipping.reviews}K Reviews
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="text-yellow-500">⭐</span>
-                  <span className="text-gray-800 text-sm">
-                    ({product.rating}) {product.shipping.reviews}K Reviews
-                  </span>
+                <hr></hr>
+                {/* Location  */}
+                <div className="flex items-center justify-between ">
+                  <span className="text-lg">📍</span>
+                  <span>{product.shipping.location}</span>
                 </div>
-              </div>
-
-              {/* Location  */}
-              <div className="flex items-center gap-2 border rounded-lg px-3 py-2 bg-gray-50">
-                <span className="text-lg">📍</span>
-                <span>{product.shipping.location}</span>
               </div>
             </div>
           </div>
@@ -147,10 +149,15 @@ export default function ProductDetail() {
         <h2 className="text-xl font-bold mb-4">Reviews</h2>
         <div className="flex gap-4 overflow-x-auto">
           {product.reviews.map((rev, i) => (
-            <div key={i} className="border rounded-lg p-4 bg-white shadow w-64 flex-shrink-0">
-              <div className="flex justify-between mb-2">
+            <div key={i} className="flex flex-col border rounded-lg p-4 bg-white shadow h-[149px] w-[414px] flex-shrink-0">
+              <div className="flex flex-col justify-between mb-2">
                 <span className="font-semibold">{rev.buyer}</span>
-                <span className="text-gray-500 text-sm">{rev.date}</span>
+                <div className="flex justify-between item-center">
+                  <span className="flex gap-1">
+                    {Array.from({ length: 5 }, (_, i) => i < Math.round(rev.ratings) ? <span key={i} className="text-[22px] text-yellow-400">★</span> : <span key={i} className="text-[22px] text-gray-300">★</span>)}
+                  </span>
+                  <span className="text-gray-500 text-sm">{rev.date}</span>
+                </div>
               </div>
               <p className="text-gray-700 text-sm">{rev.text}</p>
             </div>
@@ -164,14 +171,14 @@ export default function ProductDetail() {
         {/* horizontal row: no vertical scrollbar allowed */}
         <div className="flex gap-4 overflow-x-auto overflow-y-hidden py-2">
           {product.anotherItems.map((item, i) => (
-            <motion.div key={i} whileHover={{ scale: 1.03 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} style={{ transformOrigin: "center center" }} className="ml-1 border rounded-lg p-4 bg-[#D9C4B0] shadow flex flex-col items-center w-64 flex-shrink-0 transform-gpu">
-              <img src={item.img} alt={item.name} className="w-full h-32 object-cover rounded-md mb-3"/>
+            <div className="ml-1 border rounded-lg p-4 bg-[#D9C4B0] shadow flex flex-col items-center w-[302px] h-[376px] flex-shrink-0 transform-gpu">
+              <img src={item.img} alt={item.name} className="w-full h-199 object-cover rounded-md mb-3"/>
               <h3 className="font-semibold">{item.name}</h3>
-              <p className="text-green-600 font-bold mb-3">{item.price}</p>
-              <Link href="#" className="mt-auto px-4 py-2 bg-white rounded-lg hover:bg-blue-700">
+              <p className="font-bold mb-3">{item.price}</p>
+              <Link href="#" className="w-4/5 text-center mt-auto px-4 py-2 bg-white rounded-lg hover:bg-blue-700">
                 Make Appointment
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
