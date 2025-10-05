@@ -31,6 +31,9 @@ Route::get('/login', function(){
     return Inertia::render('login');
 })->name('login');
 
+Route::get('/product', function () {
+    return Inertia::render('ProductCatalog');
+});
 
 Route::prefix('/COD')->group(function(){
     Route::get('/date', function(){
@@ -43,6 +46,49 @@ Route::prefix('/COD')->group(function(){
         return Inertia::render("CODLocation");
     })->name("CODLocation");
 });
+Route::prefix('/Seller')->group(function(){
+    Route::get('/product', function(){
+        return Inertia::render('SellerProduct');
+    })->name('SellerProduct');
+    Route::get('/product/add', function(){
+        return Inertia::render('SellerProductAdd');
+    })->name('SellerProductAdd');
+    Route::get('/product/edit', function(){
+        return Inertia::render('SellerProductEdit');
+    })->name('SellerProductEdit');
+    Route::get('/MySchedule', function(){
+        return Inertia::render('MySchedule');
+    })->name('SellerMySchedule');
+    Route::get('/TransactionDetail', function(){
+        return Inertia::render('TransactionDetail', [
+            'role' => 'Seller'
+        ]);
+    })->name("SellerTransactionDetail");
+    Route::get('/chat', function(){
+        return Inertia::render('chat');
+    })->name('SellerChat');
+    Route::get('/review', function(){
+        return Inertia::render('review');
+    })->name('SellerReview');
+});
+
+Route::prefix('/Buyer')->group(function(){
+    Route::get('/MySchedule', function(){
+        return Inertia::render('MySchedule');
+    })->name('BuyerMySchedule');
+    Route::get('/TransactionDetail', function(){
+        return Inertia::render('TransactionDetail', [
+            'role' => 'Buyer'
+        ]);
+    })->name('BuyerTransactionDetail');
+    Route::get('/chat', function(){
+        return Inertia::render('chat');
+    })->name("BuyerChat");
+    Route::get('/review', function(){
+        return Inertia::render('review');
+    })->name('BuyerReview');
+});
+
 
 Route::get('/ProductDetail', function(){
     return Inertia::render('ProductDetail');

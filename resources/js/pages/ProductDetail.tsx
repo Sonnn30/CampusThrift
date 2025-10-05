@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ProductCard from "./ProductCard";
 import { Link } from "@inertiajs/react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
@@ -166,27 +167,11 @@ export default function ProductDetail() {
       </div>
 
       {/* Another Items */}
-      <div>
-        <h2 className="text-xl font-bold mb-4">Another Item</h2>
-        <div className="flex gap-4 overflow-x-auto overflow-y-hidden py-2">
-          {product.anotherItems.map((item, i) => (
-            <div className="ml-1 border rounded-lg p-4 bg-[#D9C4B0] shadow flex flex-col items-center w-[302px] h-[376px] flex-shrink-0 transform-gpu">
-              <img src={item.img} alt={item.name} className="bg-white w-full h-199 object-cover rounded-md mb-3"/>
-              <div className="flex flex-col item-left w-full">
-                <h3 className="font-semibold">{item.name}</h3>
-                <div className="flex bg-[#7ED751] gap-1 items-center w-2/5 rounded-lg px-1">
-                  <img src="/checkmark.png" className="w-[12px] h-[12px]" alt="checkmark" />
-                  <span className="text-[11px]">Good Seller</span>
-                </div>
-                <p className="font-bold mb-3">{item.price}</p>
-                  <Link href="#" className=" flex w-full text-[20px] text-center mt-auto px-4 py-2 bg-white rounded-lg hover:bg-blue-700 gap-3 items-center justify-center">
-                    Make Appointment
-                    <img src="/chat-bubble.png" alt="chatbubble" className="w-[21px] h-[21px]" />
-                  </Link>
-              </div>
+      <div className="max-w-[1280px]">
+            <div className="home-page">
+              <ProductCard />  
             </div>
-          ))}
-        </div>
+            
       </div>
     </div>
   );
