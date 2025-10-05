@@ -45,7 +45,7 @@ Route::prefix('/COD')->group(function(){
 });
 Route::prefix('/Seller')->group(function(){
     Route::get('/product', function(){
-        return Inertia::render('SellerProduct');
+        return Inertia::render('SellerProductPage');
     })->name('SellerProduct');
     Route::get('/product/add', function(){
         return Inertia::render('SellerProductAdd');
