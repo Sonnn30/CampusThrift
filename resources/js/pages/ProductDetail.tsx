@@ -168,7 +168,6 @@ export default function ProductDetail() {
       {/* Another Items */}
       <div>
         <h2 className="text-xl font-bold mb-4">Another Item</h2>
-        {/* horizontal row: no vertical scrollbar allowed */}
         <div className="flex gap-4 overflow-x-auto overflow-y-hidden py-2">
           {product.anotherItems.map((item, i) => (
             <div className="ml-1 border rounded-lg p-4 bg-[#D9C4B0] shadow flex flex-col items-center w-[302px] h-[376px] flex-shrink-0 transform-gpu">
