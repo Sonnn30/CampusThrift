@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import ProductCard from "./ProductCard";
-import { Link } from "@inertiajs/react";
-import { motion } from "framer-motion";
-import { format } from "date-fns";
+// import { Link } from "@inertiajs/react
 
 export default function ProductDetail() {
   // P.S. Dummy Data buat ntar masukin databasenya

@@ -1,4 +1,4 @@
-import { P } from "node_modules/framer-motion/dist/types.d-DsEeKk6G";
+// import { P } from "node_modules/framer-motion/dist/types.d-DsEeKk6G";
 import { useState } from "react"
 
 export default function TransactionDetail({role}){
