@@ -1,8 +1,8 @@
-import { P } from "node_modules/framer-motion/dist/types.d-DsEeKk6G";
+// import { P } from "node_modules/framer-motion/dist/types.d-DsEeKk6G";
 import { useState } from "react"
 
 export default function TransactionDetail({role}){
-    const [selectedRating, setSelectedRating] = useState(5);
+    const [selectedRating] = useState(5);
     const [pop, setPop] = useState(false);
     const [selected, setSelected] = useState(false)
     const [selected2, setSelected2] = useState(false)

@@ -7,6 +7,9 @@ use Inertia\Inertia;
 //     return Inertia::render('login');
 // })->name('login');
 
+
+
+
 Route::get('/' ,function(){
     return Inertia::render('home');
 })-> name('home');
@@ -86,3 +89,7 @@ Route::prefix('/Buyer')->group(function(){
     })->name('BuyerReview');
 });
 
+
+Route::get('/ProductDetail', function(){
+    return Inertia::render('ProductDetail');
+})->name('ProductDetail');
